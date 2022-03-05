@@ -21,7 +21,6 @@ public class ThiefAlarm : MonoBehaviour
         _alarmEffect.Stop();
         _alarmEffect.volume = _minVolume;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PhysicsMovement>(out PhysicsMovement thief))
@@ -32,7 +31,6 @@ public class ThiefAlarm : MonoBehaviour
             StartCoroutine(IncreaseVolume());
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PhysicsMovement>(out PhysicsMovement thief))
@@ -42,7 +40,6 @@ public class ThiefAlarm : MonoBehaviour
             StartCoroutine(DecreaseVolume());
         }
     }
-
     private IEnumerator IncreaseVolume()
     {
         while (_alarmEffect.volume < 1)
