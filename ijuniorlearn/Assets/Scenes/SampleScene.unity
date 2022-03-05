@@ -1059,7 +1059,9 @@ MonoBehaviour:
   _tilemap: {fileID: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
   _alarmEffect: {fileID: 0}
-  _timePassed: 0
+  _soundChangingDuration: 2
+  _minVolume: 0
+  _maxVolume: 1
 --- !u!82 &1738077034
 AudioSource:
   m_ObjectHideFlags: 0
