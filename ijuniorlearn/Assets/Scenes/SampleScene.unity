@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 1738077032}
   - component: {fileID: 1738077031}
   - component: {fileID: 1738077030}
+  - component: {fileID: 1738077035}
   - component: {fileID: 1738077033}
   - component: {fileID: 1738077034}
   m_Layer: 0
@@ -1056,7 +1057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0eb66180a3d76b4a9a978664e97798e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilemap: {fileID: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
   _alarmEffect: {fileID: 0}
   _soundChangingDuration: 2
@@ -1158,3 +1158,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1738077035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738077028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e083001801d00114396087af823a40b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alarm: {fileID: 0}

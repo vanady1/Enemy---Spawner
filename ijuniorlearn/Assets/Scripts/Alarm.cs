@@ -25,29 +25,23 @@ public class Alarm : MonoBehaviour
         _isChangingVolume = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Play()
     {
-        if (collision.TryGetComponent<PhysicsMovement>(out PhysicsMovement thief))
-        {
-            _tilemap.color = Color.red;
-            _alarmEffect.Play();
-            StopCoroutine(ChangeVolume(false));
-            _isChangingVolume = false;
-            StartCoroutine(ChangeVolume(true));
-        }
+        _tilemap.color = Color.red;
+        _alarmEffect.Play();
+        StopCoroutine(ChangeVolume(false));
+        _isChangingVolume = false;
+        StartCoroutine(ChangeVolume(true));
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void Stop()
     {
-        if (collision.TryGetComponent<PhysicsMovement>(out PhysicsMovement thief))
-        {
-            _tilemap.color = _defaultColor;
-            StopCoroutine(ChangeVolume(true));
-            _isChangingVolume = false;
-            StartCoroutine(ChangeVolume(false));
-        }
+        _tilemap.color = _defaultColor;
+        StopCoroutine(ChangeVolume(true));
+        _isChangingVolume = false;
+        StartCoroutine(ChangeVolume(false));
     }
-
+   
     private IEnumerator ChangeVolume(bool isIncrease)
     {
         if (_isChangingVolume == false)
