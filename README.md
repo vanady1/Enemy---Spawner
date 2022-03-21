@@ -1,2 +1,2 @@
-# Enemy-Spawner
-генерация врагов на уровне
+# SimplePlatformer
+2D платформер
