@@ -6,13 +6,14 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Enemy _enemyTemplate;
     [SerializeField] private float _timeBetweenSpawns;
+
     private Transform _spawner;
     private Transform[] _spawningPoints;
     private int _currentPoint;
 
     private void Start()
     {
-        _spawner = GetComponent<Transform>();
+        _spawner = gameObject.transform;
         _spawningPoints = new Transform[_spawner.childCount];
 
         for (int i = 0; i < _spawner.childCount; i++)
@@ -27,8 +28,9 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < _spawningPoints.Length; i++)
         {
+            WaitForSeconds waitForSeconds = new WaitForSeconds(timeAmount);
             Instantiate(_enemyTemplate, _spawningPoints[i]);
-            yield return new WaitForSeconds(timeAmount);
+            yield return waitForSeconds;
         }
     }
 }
