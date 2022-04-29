@@ -9,14 +9,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _currentHealth;
     [SerializeField] private int _healthChangeValue;
-    [SerializeField] private Slider _slider;
-    [SerializeField] private float _valueChangingTime;
+    [SerializeField] private HealthBar _healthBar;
+    
 
     private void Start()
     {
         _currentHealth = _maxHealth;
-        _slider.maxValue = _maxHealth;
-        _slider.value = _currentHealth;
+        _healthBar.SetValues(_maxHealth, _currentHealth);
     }
 
     private void Update()
@@ -24,12 +23,12 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             ChangeHealthValue(-_healthChangeValue);
-            _slider.DOValue(_currentHealth, _valueChangingTime).SetEase(Ease.Linear);
+            _healthBar.ChangeValue(_currentHealth);
         }
         else if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             ChangeHealthValue(_healthChangeValue);
-            _slider.DOValue(_currentHealth, _valueChangingTime).SetEase(Ease.Linear);
+            _healthBar.ChangeValue(_currentHealth);
         }
     }
 
