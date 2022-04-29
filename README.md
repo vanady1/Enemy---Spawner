@@ -1,2 +1,1 @@
-# SimplePlatformer
-2D платформер
+# ijunior homework
