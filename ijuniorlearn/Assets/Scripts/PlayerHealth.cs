@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
+
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
+    [SerializeField] private int _minHealth;
     [SerializeField] private int _currentHealth;
     [SerializeField] private int _healthChangeValue;
     [SerializeField] private HealthBar _healthBar;
@@ -34,13 +34,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void ChangeHealthValue(int amount)
     {
-        if (_currentHealth >= 0 && _currentHealth <= _maxHealth)
+        if (_currentHealth >= _minHealth && _currentHealth <= _maxHealth)
         {
             _currentHealth += amount;
 
-            if (_currentHealth < 0)
+            if (_currentHealth < _minHealth)
             {
-                _currentHealth = 0;
+                _currentHealth = _minHealth;
             }
             else if(_currentHealth > _maxHealth)
             {
