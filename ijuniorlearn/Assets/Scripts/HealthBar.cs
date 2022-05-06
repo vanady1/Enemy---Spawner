@@ -8,18 +8,19 @@ using DG.Tweening;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private float _valueChangingTime;
+    [SerializeField] private PlayerHealth _playerHealth;
 
     private Slider _slider;
 
-    public void SetValues(int maxValue, int currentValue)
+    private void Start()
     {
         _slider = GetComponent<Slider>();
-        _slider.maxValue = maxValue;
-        _slider.value = currentValue;
+        _slider.maxValue = _playerHealth.MaxHealth;
+        _slider.value = _playerHealth._currentHealth;
     }
 
-    public void ChangeValue(int targetValue)
+    public void ChangeValue()
     {
-        _slider.DOValue(targetValue, _valueChangingTime).SetEase(Ease.Linear);
+        _slider.DOValue(_playerHealth._currentHealth, _valueChangingTime).SetEase(Ease.Linear);
     }
 }

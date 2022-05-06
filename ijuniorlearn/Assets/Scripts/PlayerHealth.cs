@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _minHealth;
-    [SerializeField] private int _currentHealth;
     [SerializeField] private int _healthChangeValue;
-    [SerializeField] private HealthBar _healthBar;
-    
+    [SerializeField] private UnityEvent _healthChanged;
+
+    public int _currentHealth;
+
+    public int MaxHealth => _maxHealth;
+    public int MinHealth => _maxHealth;
 
     private void Start()
     {
         _currentHealth = _maxHealth;
-        _healthBar.SetValues(_maxHealth, _currentHealth);
     }
 
     private void Update()
@@ -23,12 +26,12 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             ChangeHealthValue(-_healthChangeValue);
-            _healthBar.ChangeValue(_currentHealth);
+            _healthChanged?.Invoke();
         }
         else if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             ChangeHealthValue(_healthChangeValue);
-            _healthBar.ChangeValue(_currentHealth);
+            _healthChanged?.Invoke();
         }
     }
 
