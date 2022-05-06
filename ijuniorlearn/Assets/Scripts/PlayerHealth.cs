@@ -8,13 +8,13 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _minHealth;
+    [SerializeField] public int _currentHealth;
     [SerializeField] private int _healthChangeValue;
     [SerializeField] private UnityEvent _healthChanged;
 
-    public int _currentHealth;
-
     public int MaxHealth => _maxHealth;
-    public int MinHealth => _maxHealth;
+    public int MinHealth => _minHealth;
+    public int CurrentHealth => _currentHealth;
 
     private void Start()
     {
@@ -26,29 +26,21 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             ChangeHealthValue(-_healthChangeValue);
-            _healthChanged?.Invoke();
         }
         else if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             ChangeHealthValue(_healthChangeValue);
-            _healthChanged?.Invoke();
         }
     }
 
     private void ChangeHealthValue(int amount)
     {
-        if (_currentHealth >= _minHealth && _currentHealth <= _maxHealth)
-        {
-            _currentHealth += amount;
+        int healthChange = _currentHealth;
+        _currentHealth = Mathf.Clamp(_currentHealth += amount, _minHealth, _maxHealth);
 
-            if (_currentHealth < _minHealth)
-            {
-                _currentHealth = _minHealth;
-            }
-            else if(_currentHealth > _maxHealth)
-            {
-                _currentHealth = _maxHealth;
-            }
+        if (_currentHealth != healthChange)
+        {
+            _healthChanged?.Invoke();
         }
     }
 }

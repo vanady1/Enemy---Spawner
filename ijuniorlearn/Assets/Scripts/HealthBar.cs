@@ -16,11 +16,11 @@ public class HealthBar : MonoBehaviour
     {
         _slider = GetComponent<Slider>();
         _slider.maxValue = _playerHealth.MaxHealth;
-        _slider.value = _playerHealth._currentHealth;
+        _slider.value = _playerHealth.CurrentHealth;
     }
 
     public void ChangeValue()
     {
-        _slider.DOValue(_playerHealth._currentHealth, _valueChangingTime).SetEase(Ease.Linear);
+        _slider.DOValue(_playerHealth.CurrentHealth, _valueChangingTime).SetEase(Ease.Linear);
     }
 }
