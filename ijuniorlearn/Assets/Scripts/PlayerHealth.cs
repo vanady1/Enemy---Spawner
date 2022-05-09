@@ -8,9 +8,10 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _minHealth;
-    [SerializeField] public int _currentHealth;
+    [SerializeField] private int _currentHealth;
     [SerializeField] private int _healthChangeValue;
-    [SerializeField] private UnityEvent _healthChanged;
+
+    public static UnityAction _healthChanged;
 
     public int MaxHealth => _maxHealth;
     public int MinHealth => _minHealth;
@@ -40,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (_currentHealth != healthChange)
         {
-            _healthChanged?.Invoke();
+            _healthChanged();
         }
     }
 }

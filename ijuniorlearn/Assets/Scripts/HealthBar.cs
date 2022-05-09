@@ -12,6 +12,16 @@ public class HealthBar : MonoBehaviour
 
     private Slider _slider;
 
+    private void OnEnable()
+    {
+        PlayerHealth._healthChanged += ChangeValue;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHealth._healthChanged -= ChangeValue;
+    }
+
     private void Start()
     {
         _slider = GetComponent<Slider>();
