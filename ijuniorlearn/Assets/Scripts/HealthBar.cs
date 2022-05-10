@@ -14,12 +14,12 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth._healthChanged += ChangeValue;
+        _playerHealth.HealthChanged += ChangeValue;
     }
 
     private void OnDisable()
     {
-        PlayerHealth._healthChanged -= ChangeValue;
+        _playerHealth.HealthChanged -= ChangeValue;
     }
 
     private void Start()
